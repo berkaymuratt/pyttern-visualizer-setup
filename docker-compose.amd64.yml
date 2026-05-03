@@ -1,0 +1,22 @@
+services:
+  backend:
+    image: berkaymuratt/pyttern-backend:amd64
+    platform: linux/amd64
+    container_name: pyttern-backend
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./sessions:/app/sessions
+    restart: unless-stopped
+
+  frontend:
+    image: berkaymuratt/pyttern-frontend:amd64
+    platform: linux/amd64
+    container_name: pyttern-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - API_URL=http://backend:5001
+    depends_on:
+      - backend
+    restart: unless-stopped
