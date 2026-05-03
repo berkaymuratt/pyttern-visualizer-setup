@@ -1,4 +1,4 @@
-# PYTTERN — Usability Test Environment
+# PYTTERN — Usability Test Setup
 
 This folder contains everything you need to run **PYTTERN** (web UI + backend) on
 your own machine for the usability test. The images are already built and
@@ -69,9 +69,6 @@ There are two Compose files in this folder. The right one depends on your
   ```
   - `x86_64` → use `docker-compose.amd64.yml`
   - `aarch64` or `arm64` → use `docker-compose.arm64.yml`
-
-> Most Windows PCs and most Linux desktops/servers are `amd64`.
-> Most Macs sold since late 2020 are `arm64` (Apple Silicon).
 
 ---
 
