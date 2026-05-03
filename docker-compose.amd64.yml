@@ -3,8 +3,6 @@ services:
     image: berkaymuratt/pyttern-backend:amd64
     platform: linux/amd64
     container_name: pyttern-backend
-    ports:
-      - "5001:5001"
     volumes:
       - ./sessions:/app/sessions
     restart: unless-stopped

@@ -1,6 +1,6 @@
 # PYTTERN — Usability Test Environment
 
-This folder contains everything you need to run **PYTTERN** (backend + web UI) on
+This folder contains everything you need to run **PYTTERN** (web UI + backend) on
 your own machine for the usability test. The images are already built and
 published on Docker Hub, so you only need Docker installed — no source code, no
 build step.
@@ -9,19 +9,29 @@ build step.
 
 ## 1. Prerequisites
 
-Install **Docker Desktop** (Windows / macOS) or **Docker Engine + Docker Compose**
-(Linux).
+### Check if Docker is already installed
 
-- Windows: <https://www.docker.com/products/docker-desktop/>
-- macOS: <https://www.docker.com/products/docker-desktop/>
-- Linux: <https://docs.docker.com/engine/install/>
-
-After installation, verify it works:
+Open a terminal and run:
 
 ```bash
 docker --version
 docker compose version
 ```
+
+If both commands print a version number, Docker is ready — **skip to step 2**.
+
+If you see a "command not found" error (or Docker Desktop is installed but not running), follow the steps below.
+
+### Install Docker (only if needed)
+
+Install **Docker Desktop** (Windows / macOS) or **Docker Engine + Docker Compose**
+(Linux):
+
+- Windows: <https://www.docker.com/products/docker-desktop/>
+- macOS: <https://www.docker.com/products/docker-desktop/>
+- Linux: <https://docs.docker.com/engine/install/>
+
+After installation, **start Docker Desktop** (Windows / macOS) and verify it works by running the two commands above again.
 
 Make sure Docker Desktop is **running** before going further.
 
@@ -85,61 +95,18 @@ couple of minutes. Subsequent runs start in seconds.
 
 When it's done, open your browser at:
 
-**<http://localhost:5173>**
+**<http://localhost:5173/>**
 
 That's it — the app is ready for the usability test.
 
 ---
 
-## 4. Stopping PYTTERN
+## 4. Troubleshooting
 
-In the same folder, run the matching command:
-
-**Intel / AMD (`amd64`)**
-```bash
-docker compose -f docker-compose.amd64.yml down
-```
-
-**ARM / Apple Silicon (`arm64`)**
-```bash
-docker compose -f docker-compose.arm64.yml down
-```
-
----
-
-## 5. Updating to the latest image
-
-If a new version is announced, pull the latest images and restart:
-
-```bash
-docker compose -f <your-compose-file> pull
-docker compose -f <your-compose-file> up -d
-```
-
-Replace `<your-compose-file>` with the filename you used in step 3.
-
----
-
-## 6. What's inside
-
-- **Frontend** (React/Vite) — served on `http://localhost:5173`
-- **Backend** (Python) — served on `http://localhost:5001`
-- A local `./sessions` folder is created automatically and mounted into the
-  backend container. It stores your test sessions so they persist across
-  restarts.
-
-The frontend container is configured to talk to the backend container over the
-internal Docker network (`API_URL=http://backend:5001`), so you don't need to
-change anything.
-
----
-
-## 7. Troubleshooting
-
-**Port already in use (`5173` or `5001`)**
+**Port already in use (`5173`)**
 Something else on your machine is using the port. Either stop that process or
 change the host-side port in the compose file (e.g. `"5174:5173"`) and open the
-new port in the browser.
+new port in the browser (http://localhost:5174/).
 
 **`docker: command not found` or `docker compose` not recognized**
 Docker Desktop is not installed or not running. Install it (step 1) and start
@@ -168,7 +135,24 @@ docker compose -f <your-compose-file> logs backend
 
 ---
 
-## 8. Clean up after the test
+
+## 5. Stopping PYTTERN (After the Test)
+
+At the end of usability test, run the matching command in the same folder:
+
+**Intel / AMD (`amd64`)**
+```bash
+docker compose -f docker-compose.amd64.yml down
+```
+
+**ARM / Apple Silicon (`arm64`)**
+```bash
+docker compose -f docker-compose.arm64.yml down
+```
+
+---
+
+## 6. Clean up after the test
 
 Remove the containers and the downloaded images entirely:
 
