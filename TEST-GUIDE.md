@@ -35,7 +35,7 @@ If you are unfamiliar with what a compound pattern is or how to build one as a f
 
 ## Quick Checklist
 
-1. Clone this repository and start the Pyttern Visualizer — see `README.md` for Docker setup instructions.
+1. Start the Pyttern Visualizer — if you don't setup yet, see [README.md](README.md) for setup instructions.
 2. Open `http://localhost:5173/` in your browser.
 3. Follow the **Task A** instructions on INGInious, using the files in `Task_A/`.
 4. Follow the **Task B** instructions on INGInious, using the files in `Task_B/`.

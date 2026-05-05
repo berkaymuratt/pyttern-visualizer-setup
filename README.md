@@ -1,11 +1,9 @@
 # PYTTERN — Usability Test Setup
 
-> **Participating in the test?** Start here: [TEST-GUIDE.md](TEST-GUIDE.md) — it explains the two tasks and where to find all the files you need.
-
 This folder contains everything you need to run **PYTTERN** (web UI + backend) on
-your own machine for the usability test. The images are already built and
-published on Docker Hub, so you only need Docker installed — no source code, no
-build step.
+your own machine and the files you should use for the tasks inside usability test.
+
+> **Did you already set-up everthing?** Start here: [TEST-GUIDE.md](TEST-GUIDE.md) — it explains the two tasks and where to find all the files you need.
 
 ---
 
@@ -97,6 +95,9 @@ When it's done, open your browser at:
 **<http://localhost:5173/>**
 
 That's it — the app is ready for the usability test.
+Start here: [TEST-GUIDE.md](TEST-GUIDE.md) — it explains the two tasks and where to find all the files you need.
+
+After completing the tasks you can follow from the Step 5 to clean the setup
 
 ---
 
